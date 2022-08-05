@@ -1,0 +1,15 @@
+https://purestudio.itch.io/ipix
+
+IPix(Chinese Pixel Font/ 中文像素字体)
+
+推荐字号：12pt
+
+这是一个像素中文字体，里面具有6000多个常用字（具体参见word.txt），其是使用HZK16字模制作。
+
+你可以在在商业和免费游戏项目中使用这个字体。
+
+Recommand Font Size: 12pt
+
+This is a Chinese pixel font. It cover almost 6000 characters in Chinese. it made by HZK16. 
+
+You could use it in free and commercial game. 

@@ -1,0 +1,25 @@
+{
+    "config": {
+        "1": {
+            "name": "航行",
+            "cardType" : "move",
+            "cost": 1,
+            "value" : 1,
+            "desc" : "前进{0}"
+        },
+        "2": {
+            "name": "寻食",
+            "cardType" : "search",
+            "cost": 1,
+            "value" : 3,
+            "desc" : "食物加{0}"
+        },
+        "3": {
+            "name": "领导",
+            "cardType" : "lead",
+            "cost": 1,
+            "value" : 2,
+            "desc" : "领导力加{0}"
+        }
+    }
+}

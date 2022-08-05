@@ -1,0 +1,48 @@
+结论：
+
+音乐设置(大)
+格式：ogg
+Load Type：Streaming
+Compression Format：Vorbis
+Sample Rate Setting：Override Sample Rate，统一覆盖为44,100Hz
+Force To Mono：勾上，表示混缩为单声道
+
+音效设置(小)
+格式：wav
+Load Type：Decompress On Load
+Compression Format：极短的用ADPCM，中等长度用Vorbis
+Sample Rate Setting：Override Sample Rate，统一覆盖为44,100Hz
+Force To Mono：勾上，表示混缩为单声道
+
+
+详细说明：
+
+Load Type：Unity 在运行时用于加载音频资源的方法。
+	Decompress On Load：音频文件加载后将立即解压缩。
+    请对小的压缩过的声音使用此选项，以避免动态解压缩产生性能开销。请注意，在加载时解压缩 Vorbis 编码的声音所使用的内存量是保持压缩状态时内存使用量的 10 倍（ADPCM 编码约为 3.5 倍），因此请勿对大文件使用此选项。
+	Compressed In Memory：声音在内存中保持压缩状态，播放时解压缩。
+    此选项具有轻微的性能开销（特别是对于 Ogg/Vorbis 压缩文件），因此仅应当将其用于较大的文件（此情况下，加载时解压缩将使用大量的内存）。解压缩发生在混音器线程中，可在性能分析器窗口的音频面板中的“DSP CPU”部分对其进行监控。
+
+	Streaming：即时解码声音。
+    此方法使用最少量的内存来缓冲从磁盘中逐渐读取并即时解码的压缩数据。请注意，解压缩发生在单独的串流线程上；可在性能分析器窗口的音频面板中的“Streaming CPU”部分监控其 CPU 使用率。
+    注意：即使没有加载任何音频数据，串流剪辑也有大约 200KB 的过载量。
+
+Compression Format：在运行时将用于声音的特定格式。
+    请注意，可用选项取决于当前选定的构建目标。
+	PCM：此选项提供高质量，代价是文件内存变大，适合内存小的声音效果。
+	ADPCM：此格式适用于大量噪音和需要大量播放的声音（例如脚步声、撞击声、武器声音）。
+    较之于 PCM，压缩能力提高 3.5 倍，但 CPU 使用率远低于 MP3/Vorbis 格式，因此成为上述声音类别的最佳压缩方案。
+	Vorbis/MP3：压缩使文件减小，但与 PCM 音频相比，质量降低。可通过 Quality 滑动条来配置压缩量。此格式最适合中等长度的音效和音乐。
+
+Sample Rate Setting：PCM 和 ADPCM 压缩格式允许自动优化或手动降低采样率。
+	Preserve Sample Rate：此设置可保持采样率不变（默认值）。
+	Optimize Sample Rate：此设置根据分析的最高频率内容自动优化采样率。
+	Override Sample Rate：此设置允许手动覆盖采样率，因此可有效地将其用于丢弃频率内容。
+
+Force To Mono：如果启用此选项，音频剪辑将在下方混为单声道声音。在混合之后，信号的峰值归一化，因为混合过程通常会产生比原始信号更安静的信号，所以峰值归一化信号通过音频源的音量属性调节为后面的调整提供了更好的空间。
+
+Load In Background：如果启用此选项，音频剪辑将在后台加载，不会导致主线程停顿。默认情况下，此选项为关闭状态以确保 Unity 为标准形式，即：在场景开始播放时所有音频剪辑已完成加载。请注意，针对仍在后台加载的音频剪辑的播放请求将被延迟，直到剪辑完成加载。可通过 AudioClip.loadState 属性来查询加载状态。
+
+Preload Audio Data：如果启用此选项，则在加载场景时提前加载音频剪辑文件。默认情况下，此选项为开启状态以反映 Unity 标准模式，即：在场景开始播放时所有音频剪辑文件已完成加载。如果未设置此标志，音频数据将加载到第一个 AudioSource.Play()/AudioSource.PlayOneShot()，或者可通过 AudioSource.LoadAudioData() 加载并通过 AudioSource.UnloadAudioData() 卸载。
+
+Quality：确定要应用于__压缩__剪辑的压缩量。不适用于 PCM/ADPCM/HEVAG 格式。可在检视面板中查看有关文件大小的统计信息。要调整此值，建议将滑动条拖动到某个位置让播放质量“足够好”，同时又保持文件足够小以满足发布条件。请注意，原始大小与原始文件有关，因此如果这是一个 MP3 文件并且压缩格式设置为 PCM（即未压缩），则生成的比率将大于 100％，因为该文件是未压缩存储，并占用超过了 MP3 格式文件的原始空间。

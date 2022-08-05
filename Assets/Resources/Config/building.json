@@ -1,0 +1,40 @@
+{
+    "config": {
+        "1": {
+            "name": "城墙",
+            "cost": 100,
+            "url" : "Prefabs/Building/Building7",
+            "state": {
+                "1" : {
+                    "buildingHold" : {},
+                    "buildingChase" : {},
+                    "buildingAttack" : {}
+                } 
+            }
+        },
+        "2": {
+            "name": "房屋",
+            "cost": 100,
+            "url" : "Prefabs/Building/Building8",
+            "state": {
+                "1" : {
+                    "buildingHold" : {},
+                    "buildingChase" : {},
+                    "buildingAttack" : {}
+                }
+            }
+        },
+        "3": {
+            "name": "农田",
+            "cost": 100,
+            "url" : "Prefabs/Building/Building4",
+            "state": {
+                "1" : {
+                    "buildingHold" : {},
+                    "buildingChase" : {},
+                    "buildingAttack" : {}
+                }
+            }
+        }
+    }
+}
