@@ -8,7 +8,7 @@ public partial class CardObject
     void startGameObject()
     {
         var obj = (GameObject) Resources.Load("Prefabs/UI/CardProto");
-        var parent = this.boatUnit.gameObject.transform.Find("bottomPanel");
+        var parent = this.boatUnit.gameObject.transform.Find("Hand");
         var go = GameObject.Instantiate(obj, parent, true);
         go.transform.localScale = Vector3.one;
         this.cardProto = go.AddComponent<CardProto>();

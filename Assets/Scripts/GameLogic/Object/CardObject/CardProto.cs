@@ -19,13 +19,13 @@ public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
 
     public void start()
     {
-        this.nameLabel = this.gameObject.transform.Find("nameLabel").GetComponent<Text>();
-        this.descLabel = this.gameObject.transform.Find("descLabel").GetComponent<Text>();
-        this.costLabel = this.gameObject.transform.Find("costLabel").GetComponent<Text>();
-
-        this.nameLabel.text = this.cardInsData.name;
-        this.descLabel.text = this.cardInsData.getDesc();
-        this.costLabel.text = this.cardInsData.cost.toString();
+        // this.nameLabel = this.gameObject.transform.Find("nameLabel").GetComponent<Text>();
+        // this.descLabel = this.gameObject.transform.Find("descLabel").GetComponent<Text>();
+        // this.costLabel = this.gameObject.transform.Find("costLabel").GetComponent<Text>();
+        //
+        // this.nameLabel.text = this.cardInsData.name;
+        // this.descLabel.text = this.cardInsData.getDesc();
+        // this.costLabel.text = this.cardInsData.cost.toString();
     }
 
     public void stop()

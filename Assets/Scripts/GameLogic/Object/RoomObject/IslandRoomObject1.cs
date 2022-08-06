@@ -48,6 +48,7 @@ public class IslandRoomObject1 : RoomBaseObject
         Debug.LogWarning("抽卡，补充淡水");
         this.delay = 1;
         this.currentDelay = 0;
+        this.battleObject.battleUI.endRoundBtn.onClick.AddListener(this.clickBtnEvent);
     }
 
     void updateActionRound(float dt)
