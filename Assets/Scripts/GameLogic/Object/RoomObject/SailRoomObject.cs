@@ -45,20 +45,20 @@ public class SailRoomObject : RoomBaseObject
     {
         base.enter();
 
-        this.battleObject.refreshBattleTitle("进入海洋");
+        Debug.LogWarning("进入海洋");
         this.baseState = SailRoomObjectStatus.ActionRound;
     }
 
     public override void exit()
     {
-        this.battleObject.refreshBattleTitle("离开海洋");
+        Debug.LogWarning("离开海洋");
         base.exit();
     }
 
     void runActionRound()
     {
         //TODO:回合开始，抽卡
-        this.battleObject.refreshBattleTitle("行动回合开始，抽卡");
+        Debug.LogWarning("行动回合开始，抽卡");
         this.delay = 1;
         this.currentDelay = 0;
     }
@@ -75,7 +75,7 @@ public class SailRoomObject : RoomBaseObject
     void runCalculate()
     {
         //TODO:结算，前进
-        this.battleObject.refreshBattleTitle("结算，前进");
+        Debug.LogWarning("结算，前进");
         
         this.currentStep++;
         
@@ -95,7 +95,7 @@ public class SailRoomObject : RoomBaseObject
     void runEvent()
     {
         //TODO:事件触发
-        this.battleObject.refreshBattleTitle("事件触发");
+        Debug.LogWarning("事件触发");
         this.delay = 1;
         this.currentDelay = 0;
     }

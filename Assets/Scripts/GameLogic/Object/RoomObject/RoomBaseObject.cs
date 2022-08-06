@@ -6,7 +6,8 @@ public class RoomBaseObject : BaseObject
 {
     public RoomBaseObject preRoomObject;
     public RoomBaseObject nextRoomObject;
-    
+    public RoomConfig roomConfig;
+
     public BattleObject battleObject;
     
     public virtual void enter()

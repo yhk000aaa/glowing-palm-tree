@@ -1,0 +1,19 @@
+{
+    "config": {
+        "1": {
+            "name": "海洋",
+            "type" : "sail",
+            "value" : 1,
+        },
+        "2": {
+            "name": "淡水岛",
+            "type" : "island1",
+            "value" : 1,
+        },
+        "3": {
+            "name": "非淡水岛",
+            "type" : "island2",
+            "value" : 2,
+        }
+    }
+}

@@ -18,25 +18,14 @@ public partial class BattleObject
     void startStatus()
     {
         //TODO:加载roomObject
-        var obj1 = DataUtils.Instance.getActivator<SailRoomObject>("SailRoomObject");
-        obj1.battleObject = this;
-        obj1.init();
-        var obj2 = DataUtils.Instance.getActivator<IslandRoomObject1>("IslandRoomObject1");
-        obj2.battleObject = this;
-        obj2.init();
 
-        var obj3 = DataUtils.Instance.getActivator<SailRoomObject>("SailRoomObject");
-        obj3.battleObject = this;
-        obj3.init();
-
-        var obj4 = DataUtils.Instance.getActivator<IslandRoomObject2>("IslandRoomObject2");
-        obj4.battleObject = this;
-        obj4.init();
-
-        this.roomObjectList.Add(obj1);
-        this.roomObjectList.Add(obj2);
-        this.roomObjectList.Add(obj3);
-        this.roomObjectList.Add(obj4);
+        foreach (var roomConfig in this.mainNode.mainData.roomConfigRoot.configList) {
+            var obj = DataUtils.Instance.getActivator<RoomBaseObject>(roomConfig.objectClassName);
+            obj.battleObject = this;
+            obj.roomConfig = roomConfig;
+            obj.init();
+            this.roomObjectList.Add(obj);
+        }
 
         for (int i = 0; i < this.roomObjectList.Count; i++) {
             var o = this.roomObjectList[i];
@@ -78,12 +67,5 @@ public partial class BattleObject
     private void endBattle()
     {
         this.mainNode.tryEnterEducation();
-    }
-
-    public void refreshBattleTitle(string desc)
-    {
-        var battleUI = UIManager.Instance.GetUI<BattleUI>(EnumUIType.BattleUI);
-        var text = battleUI.transform.Find("topPanel").Find("titleLabel").GetComponent<Text>();
-        text.text = desc;
     }
 }

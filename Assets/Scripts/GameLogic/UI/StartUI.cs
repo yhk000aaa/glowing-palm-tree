@@ -16,7 +16,7 @@ public class StartUI : BaseUI
     protected override void OnStart()
     {
         base.OnStart();
-        this.confirmBtn = this.gameObject.transform.Find("ConfirmBtn").GetComponent<Button>();
+        this.confirmBtn = this.gameObject.transform.Find("startButton").GetComponent<Button>();
         this.confirmBtn.onClick.AddListener(this.clickConfirmBtnEvent);
     }
 

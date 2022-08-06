@@ -44,12 +44,12 @@ public partial class BoatUnit : Unit
     public BoatConfig boatConfig { get; private set; }
     private BattleUI battleUI;
     
-    private GameObject roleObject;
-    private Text leaderText;
-    private Text cookText;
-    private Text guideText;
-    private Text operateText;
-    private Text surfText;
+    // private GameObject roleObject;
+    // private Text leaderText;
+    // private Text cookText;
+    // private Text guideText;
+    // private Text operateText;
+    // private Text surfText;
 
     protected override void popPrepare()
     {
@@ -59,12 +59,12 @@ public partial class BoatUnit : Unit
         this.battleUI = this._config["battleUI"] as BattleUI;
         this.boatConfig = this._config["config"] as BoatConfig;
 
-        this.roleObject = this.battleUI.gameObject.transform.Find("rolePanel").gameObject;
-        this.leaderText = this.roleObject.transform.Find("leaderText").GetComponent<Text>();
-        this.cookText = this.roleObject.transform.Find("cookText").GetComponent<Text>();
-        this.guideText = this.roleObject.transform.Find("guideText").GetComponent<Text>();
-        this.operateText = this.roleObject.transform.Find("operateText").GetComponent<Text>();
-        this.surfText = this.roleObject.transform.Find("surfText").GetComponent<Text>();
+        // this.roleObject = this.battleUI.gameObject.transform.Find("rolePanel").gameObject;
+        // this.leaderText = this.roleObject.transform.Find("leaderText").GetComponent<Text>();
+        // this.cookText = this.roleObject.transform.Find("cookText").GetComponent<Text>();
+        // this.guideText = this.roleObject.transform.Find("guideText").GetComponent<Text>();
+        // this.operateText = this.roleObject.transform.Find("operateText").GetComponent<Text>();
+        // this.surfText = this.roleObject.transform.Find("surfText").GetComponent<Text>();
 
         this.activeData = DataUtils.Instance.getActivator<BoatActiveData>("BoatActiveData");
         this.activeData.init(this.boatConfig);

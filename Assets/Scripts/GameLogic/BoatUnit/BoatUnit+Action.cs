@@ -29,26 +29,26 @@ public partial class BoatUnit
     
     private void SurfObjOnValueChangeAction()
     {
-        this.surfText.text = string.Format("航向点:{0}", this.activeData.surfObj.value);
+        // this.surfText.text = string.Format("航向点:{0}", this.activeData.surfObj.value);
     }
 
     private void OperateObjOnValueChangeAction()
     {
-        this.operateText.text = string.Format("动手能力:{0}", this.activeData.operateObj.value);
+        // this.operateText.text = string.Format("动手能力:{0}", this.activeData.operateObj.value);
     }
 
     private void GuideObjOnValueChangeAction()
     {
-        this.guideText.text = string.Format("导航能力:{0}", this.activeData.guideObj.value);
+        // this.guideText.text = string.Format("导航能力:{0}", this.activeData.guideObj.value);
     }
 
     private void CookObjOnValueChangeAction()
     {
-        this.cookText.text = string.Format("厨艺:{0}", this.activeData.cookObj.value);
+        // this.cookText.text = string.Format("厨艺:{0}", this.activeData.cookObj.value);
     }
 
     private void LeaderObjOnValueChangeAction()
     {
-        this.leaderText.text = string.Format("领导力:{0}", this.activeData.leaderObj.value);
+        // this.leaderText.text = string.Format("领导力:{0}", this.activeData.leaderObj.value);
     }
 }

@@ -65,21 +65,17 @@ public class GameCtrl : MonoBehaviour
 
     void runInitSetting()
     {
-        Debug.LogError("runInitSetting");
         Application.targetFrameRate = 60;
         this.stepComplete();
     }
 
     void runUserLogin()
     {
-        Debug.LogError("runUserLogin");
-
         this.stepComplete();
     }
 
     void runInitData()
     {
-        Debug.LogError("runInitData");
         {
             //读取设置数据
             MainData.Instance.LoadSaverIntoMainData(SaveID.Config);
@@ -96,15 +92,11 @@ public class GameCtrl : MonoBehaviour
 
     void runInitSdk()
     {
-        Debug.LogError("runInitSdk");
-
         this.stepComplete();
     }
 
     void runStay()
     {
-        Debug.LogError("runStay");
-
         this.educationNode = new EducationNode();
         this.educationNode.start();
     }
