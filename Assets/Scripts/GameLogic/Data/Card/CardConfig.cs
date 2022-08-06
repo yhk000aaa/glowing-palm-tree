@@ -17,6 +17,12 @@ public class CardConfig : NSConfigObject
     public float cost { get; private set; }
     public float value { get; private set; }
     public string cardType { get; private set; }
+    public string cardObjectClassName => CardObjectClassNames.objectValue(this.cardType, "CardObject");
+    
+    private static Dictionary<string, string> CardObjectClassNames = new Dictionary<string, string>()
+    {
+        {CardType.Move, "CardObject"},
+    };
 
     public override void initializeByParameters(Dictionary<string, object> parameters)
     {
