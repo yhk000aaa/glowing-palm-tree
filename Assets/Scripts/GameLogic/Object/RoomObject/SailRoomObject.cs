@@ -36,6 +36,7 @@ public class SailRoomObject : RoomBaseObject
         this.updateActions[SailRoomObjectStatus.Calculate] = this.updateCalculate;
 
         this.statusActions[SailRoomObjectStatus.Event] = this.runEvent;
+        this.updateActions[SailRoomObjectStatus.Event] = this.updateEvent;
         this.leaveActions[SailRoomObjectStatus.Event] = this.leaveEvent;
 
         this.statusActions[SailRoomObjectStatus.Over] = this.runOver;
@@ -94,12 +95,23 @@ public class SailRoomObject : RoomBaseObject
     {
         //TODO:事件触发
         Debug.LogWarning("事件触发");
-        this.battleObject.battleUI.endRoundBtn.onClick.AddListener(this.clickEndBtnEvent);
+        var eventConfig = this.mainNode.mainData.eventConfigRoot.configList.getRandomOne();
+        this.eventObject = DataUtils.Instance.getActivator<EventObject>(eventConfig.objectClassName);
+        this.eventObject.eventConfig = eventConfig;
+        this.eventObject.start();
+    }
+
+    void updateEvent(float dt)
+    {
+        if (this.eventObject.isOver) {
+            this.tryMoveNextRound();
+        }
     }
 
     void leaveEvent()
     {
-        this.battleObject.battleUI.endRoundBtn.onClick.RemoveListener(this.clickEndBtnEvent);
+        this.eventObject.stop();
+        this.eventObject = null;
     }
     
     void runOver()
@@ -125,9 +137,6 @@ public class SailRoomObject : RoomBaseObject
     {
         if (this.baseState == SailRoomObjectStatus.ActionRound) {
             this.baseState = SailRoomObjectStatus.Calculate;
-        }
-        else if (this.baseState == SailRoomObjectStatus.Event) {
-            this.tryMoveNextRound();
         }
     }
 }

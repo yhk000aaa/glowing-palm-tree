@@ -9,6 +9,7 @@ public partial class EducationData
     public BoatConfigRoot boatConfigRoot => BoatDataHandler.Instance.configRoot;
     public CardConfigRoot cardConfigRoot => CardDataHandler.Instance.configRoot;
     public RoomConfigRoot roomConfigRoot => RoomDataHandler.Instance.configRoot;
+    public EventConfigRoot eventConfigRoot => EventDataHandler.Instance.configRoot;
 
     public void start()
     {

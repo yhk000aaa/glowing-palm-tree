@@ -9,11 +9,12 @@ public class DataModule
     public const string Card = "card";
     public const string Boat = "boat";
     public const string Room = "room";
+    public const string Event = "event";
 
     //配置加载顺序
     public static List<string> ConfigModuleNameList = new List<string>()
     {
-        Card, Boat, Room
+        Card, Boat, Room, Event
     };
 
     //数据加载顺序
@@ -26,6 +27,7 @@ public class DataModule
         {Card, "CardDataHandler"},
         {Boat, "BoatDataHandler"},
         {Room, "RoomDataHandler"},
+        {Event, "EventDataHandler"},
     };
 }
 

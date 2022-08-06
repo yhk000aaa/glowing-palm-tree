@@ -30,6 +30,10 @@ public partial class BoatUnit
 
     void stopCards()
     {
+        foreach (var o in this.cardObjectList) {
+            o.stop();
+        }
+        this.cardObjectList.Clear();
     }
 
     public void addCardObject(CardConfig cardConfig)

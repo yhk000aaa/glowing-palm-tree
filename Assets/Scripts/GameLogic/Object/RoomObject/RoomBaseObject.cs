@@ -9,6 +9,7 @@ public class RoomBaseObject : BaseObject
     public RoomConfig roomConfig;
 
     public BattleObject battleObject;
+    protected EventObject eventObject;
     
     public virtual void enter()
     {

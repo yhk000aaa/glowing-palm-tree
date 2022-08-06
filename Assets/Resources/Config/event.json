@@ -1,0 +1,9 @@
+{
+    "config": {
+        "1": {
+            "name": "事件1",
+            "type" : "useWalter",
+            "value" : 1,
+        },
+    }
+}
