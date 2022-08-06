@@ -25,6 +25,7 @@ public class IslandRoomObject2 : RoomBaseObject
         
         this.statusActions[IslandRoomObject2Status.ActionRound] = this.runActionRound;
         this.updateActions[IslandRoomObject2Status.ActionRound] = this.updateActionRound;
+        this.leaveActions[IslandRoomObject2Status.ActionRound] = this.leaveActionRound;
 
         this.statusActions[IslandRoomObject2Status.Over] = this.runOver;
     }
@@ -59,6 +60,10 @@ public class IslandRoomObject2 : RoomBaseObject
             this.currentDelay = 0;
             this.baseState = IslandRoomObject2Status.Over;
         }
+    }
+
+    void leaveActionRound()
+    {
     }
 
     void runOver()

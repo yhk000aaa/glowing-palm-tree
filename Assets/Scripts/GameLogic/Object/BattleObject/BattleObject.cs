@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XHFrameWork;
 
 public class BaseObject
 {
@@ -49,9 +50,12 @@ public class BaseObject
 
 public partial class BattleObject :BaseObject
 {
+    public BattleUI battleUI { get; private set; }
+
     public override void init()
     {
         base.init();
+        this.battleUI = UIManager.Instance.GetUI<BattleUI>(EnumUIType.BattleUI);
         this.initStatus();
     }
 

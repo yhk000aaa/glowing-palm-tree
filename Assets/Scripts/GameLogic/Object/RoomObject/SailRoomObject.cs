@@ -30,14 +30,14 @@ public class SailRoomObject : RoomBaseObject
         base.init();
         
         this.statusActions[SailRoomObjectStatus.ActionRound] = this.runActionRound;
-        this.updateActions[SailRoomObjectStatus.ActionRound] = this.updateActionRound;
+        this.leaveActions[SailRoomObjectStatus.ActionRound] = this.leaveActionRound;
 
         this.statusActions[SailRoomObjectStatus.Calculate] = this.runCalculate;
         this.updateActions[SailRoomObjectStatus.Calculate] = this.updateCalculate;
 
         this.statusActions[SailRoomObjectStatus.Event] = this.runEvent;
-        this.updateActions[SailRoomObjectStatus.Event] = this.updateEvent;
-        
+        this.leaveActions[SailRoomObjectStatus.Event] = this.leaveEvent;
+
         this.statusActions[SailRoomObjectStatus.Over] = this.runOver;
     }
 
@@ -46,11 +46,13 @@ public class SailRoomObject : RoomBaseObject
         base.enter();
 
         Debug.LogWarning("进入海洋");
+        this.battleObject.battleUI.transform.Find("Hand").gameObject.SetActive(true);
         this.baseState = SailRoomObjectStatus.ActionRound;
     }
 
     public override void exit()
     {
+        this.battleObject.battleUI.transform.Find("Hand").gameObject.SetActive(false);
         Debug.LogWarning("离开海洋");
         base.exit();
     }
@@ -61,22 +63,18 @@ public class SailRoomObject : RoomBaseObject
         Debug.LogWarning("行动回合开始，抽卡");
         this.delay = 1;
         this.currentDelay = 0;
+        this.battleObject.battleUI.endRoundBtn.onClick.AddListener(this.clickEndBtnEvent);
     }
-
-    void updateActionRound(float dt)
+    
+    void leaveActionRound()
     {
-        this.currentDelay += dt;
-        if (this.currentDelay > this.delay) {
-            this.currentDelay = 0;
-            this.baseState = SailRoomObjectStatus.Calculate;
-        }
+        this.battleObject.battleUI.endRoundBtn.onClick.RemoveListener(this.clickEndBtnEvent);
     }
 
     void runCalculate()
     {
         //TODO:结算，前进
         Debug.LogWarning("结算，前进");
-        
         this.currentStep++;
         
         this.delay = 1;
@@ -96,19 +94,14 @@ public class SailRoomObject : RoomBaseObject
     {
         //TODO:事件触发
         Debug.LogWarning("事件触发");
-        this.delay = 1;
-        this.currentDelay = 0;
-    }
-    
-    void updateEvent(float dt)
-    {
-        this.currentDelay += dt;
-        if (this.currentDelay > this.delay) {
-            this.currentDelay = 0;
-            this.tryMoveNextRound();
-        }
+        this.battleObject.battleUI.endRoundBtn.onClick.AddListener(this.clickEndBtnEvent);
     }
 
+    void leaveEvent()
+    {
+        this.battleObject.battleUI.endRoundBtn.onClick.RemoveListener(this.clickEndBtnEvent);
+    }
+    
     void runOver()
     {
         this.moveToNextRoom();
@@ -126,5 +119,15 @@ public class SailRoomObject : RoomBaseObject
         }
         
         this.baseState = SailRoomObjectStatus.ActionRound;
+    }
+
+    void clickEndBtnEvent()
+    {
+        if (this.baseState == SailRoomObjectStatus.ActionRound) {
+            this.baseState = SailRoomObjectStatus.Calculate;
+        }
+        else if (this.baseState == SailRoomObjectStatus.Event) {
+            this.tryMoveNextRound();
+        }
     }
 }

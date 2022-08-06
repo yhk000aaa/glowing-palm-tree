@@ -9,7 +9,6 @@ public partial class BattleObject
     private List<RoomBaseObject> roomObjectList;
     private RoomBaseObject currentRoomObject;
     private BoatUnit boatUnit;
-    public BattleUI battleUI { get; private set; }
 
     void initStatus()
     {
@@ -40,8 +39,7 @@ public partial class BattleObject
         }
         
         this.setCurrentRoomObject(this.roomObjectList[0]);
-
-        this.battleUI = UIManager.Instance.GetUI<BattleUI>(EnumUIType.BattleUI);
+        
         this.boatUnit = this.mainNode.unitManager.createBoatUnit(battleUI, BoatDataHandler.Instance.configRoot.configList.getRandomOne());
     }
 
