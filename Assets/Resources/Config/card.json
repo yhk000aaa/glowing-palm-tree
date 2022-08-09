@@ -20,6 +20,13 @@
             "cost": 1,
             "value" : 2,
             "desc" : "领导力加{0}"
+        },
+        "4"{
+            "name":"收集",
+            "cardType":"materialr",
+            "cost":3,
+            "value":4,
+            "desc":"收集废料{0}"
         }
     }
 }

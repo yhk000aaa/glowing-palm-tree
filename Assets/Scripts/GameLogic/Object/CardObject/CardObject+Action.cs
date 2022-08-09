@@ -19,4 +19,44 @@ public partial class CardObject
     {
         this.isOver = true;
     }
+    public class MoveCardOject : CardObject
+    {
+        public override void triggerUseAction()
+        {
+            base.triggerUseAction();
+
+            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+
+        }
+    }
+    public class SearchCardObject : CardObject
+    {
+        public override void triggerUseAction()
+        {
+            base.triggerUseAction();
+
+            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+
+        }
+    }
+    public class LeaderCardObject : CardObject
+    {
+        public override void triggerUseAction()
+        {
+            base.triggerUseAction();
+
+            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+
+        }
+    }
+    public class MaterialrCardObject : CardObject
+    {
+        public override void triggerUseAction()
+        {
+            base.triggerUseAction();
+
+            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+
+        }
+    }
 }

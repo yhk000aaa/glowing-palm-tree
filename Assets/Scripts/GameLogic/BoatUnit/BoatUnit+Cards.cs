@@ -8,7 +8,8 @@ public partial class BoatUnit
 
     void startCards()
     {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++)
+        {
             var cardConfig = CardDataHandler.Instance.configRoot.configList.getRandomOne();
             this.addCardObject(cardConfig);
         }
@@ -16,11 +17,14 @@ public partial class BoatUnit
 
     void updateCards(float dt)
     {
-        foreach (var o in this.cardObjectList) {
-            if (o.isOver) {
+        foreach (var o in this.cardObjectList)
+        {
+            if (o.isOver)
+            {
                 o.stop();
             }
-            else {
+            else
+            {
                 o.update(dt);
             }
         }
@@ -30,7 +34,8 @@ public partial class BoatUnit
 
     void stopCards()
     {
-        foreach (var o in this.cardObjectList) {
+        foreach (var o in this.cardObjectList)
+        {
             o.stop();
         }
         this.cardObjectList.Clear();

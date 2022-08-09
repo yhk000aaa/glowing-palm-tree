@@ -11,6 +11,8 @@ public class BoatConfig : NSConfigObject
     public float surf { get; private set; }
     public float guide { get; private set; }
 
+    public float walter { get; private set; }
+
     public override void initializeByParameters(Dictionary<string, object> parameters)
     {
         base.initializeByParameters(parameters);
@@ -20,5 +22,6 @@ public class BoatConfig : NSConfigObject
         this.cook = parameters.floatValue("cook");
         this.surf = parameters.floatValue("surf");
         this.guide = parameters.floatValue("guide");
+        this.walter = parameters.floatValue("walter");
     }
 }

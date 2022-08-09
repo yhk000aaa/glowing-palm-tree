@@ -26,7 +26,7 @@ public partial class BoatUnit
         this.activeData.operateObj.onValueChangeAction -= OperateObjOnValueChangeAction;
         this.activeData.surfObj.onValueChangeAction -= SurfObjOnValueChangeAction;
     }
-    
+
     private void SurfObjOnValueChangeAction()
     {
         // this.surfText.text = string.Format("航向点:{0}", this.activeData.surfObj.value);

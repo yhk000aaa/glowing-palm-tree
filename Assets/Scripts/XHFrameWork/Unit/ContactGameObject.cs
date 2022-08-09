@@ -9,7 +9,7 @@ public class ContactGameObject : MonoBehaviour
     public event Action<Collider> onContactStay;
     public event Action<Collider> onContactEnd;
     public Unit unit;
-    
+
     private void OnTriggerEnter(Collider other)
     {
         this.unit.OnTriggerEnter(other);

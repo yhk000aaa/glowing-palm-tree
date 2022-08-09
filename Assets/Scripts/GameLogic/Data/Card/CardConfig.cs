@@ -8,6 +8,8 @@ public class CardType
     public const string Search = "search";
     public const string Move = "move";
     public const string Leader = "lead";
+
+    public const string Materialr = "materialr";
 }
 
 public class CardConfig : NSConfigObject
@@ -18,10 +20,17 @@ public class CardConfig : NSConfigObject
     public float value { get; private set; }
     public string cardType { get; private set; }
     public string cardObjectClassName => CardObjectClassNames.objectValue(this.cardType, "CardObject");
-    
+
     private static Dictionary<string, string> CardObjectClassNames = new Dictionary<string, string>()
     {
-        {CardType.Move, "CardObject"},
+        {CardType.Move, "MoveCardObject"},
+
+        {CardType.Search, "SearchCardObject"},
+
+        {CardType.Leader, "LeaderCardObject"},
+
+        {CardType.Materialr, "MaterialrCardObject"},
+
     };
 
     public override void initializeByParameters(Dictionary<string, object> parameters)

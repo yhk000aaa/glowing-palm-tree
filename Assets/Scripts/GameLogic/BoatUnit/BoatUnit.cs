@@ -12,6 +12,8 @@ public class BoatActiveData
         public const string CookPoint = "cook";
         public const string SurfPoint = "surf";
         public const string GuidePoint = "guide";
+        public const string WalterPoint = "walter";
+        public const string SailPoint = "sail";
 
     }
     public BoatConfig boatConfig { get; private set; }
@@ -22,7 +24,8 @@ public class BoatActiveData
     public NumberDisplayObject cookObj => this.numberObjects[NumberType.CookPoint];
     public NumberDisplayObject surfObj => this.numberObjects[NumberType.SurfPoint];
     public NumberDisplayObject guideObj => this.numberObjects[NumberType.GuidePoint];
-
+    public NumberDisplayObject walterObj => this.numberObjects[NumberType.WalterPoint];
+    public NumberDisplayObject sailObj => this.numberObjects[NumberType.SailPoint];
     public void init(BoatConfig boatConfig)
     {
         this.boatConfig = boatConfig;
@@ -33,6 +36,9 @@ public class BoatActiveData
         this.numberObjects[NumberType.CookPoint] = new NumberDisplayObject(this.boatConfig.cook);
         this.numberObjects[NumberType.SurfPoint] = new NumberDisplayObject(this.boatConfig.surf);
         this.numberObjects[NumberType.GuidePoint] = new NumberDisplayObject(this.boatConfig.guide);
+        this.numberObjects[NumberType.WalterPoint] = new NumberDisplayObject(30);
+        this.numberObjects[NumberType.SailPoint] = new NumberDisplayObject(0);
+
     }
 }
 
@@ -43,7 +49,7 @@ public partial class BoatUnit : Unit
     public BoatActiveData activeData { get; private set; }
     public BoatConfig boatConfig { get; private set; }
     private BattleUI battleUI;
-    
+
     // private GameObject roleObject;
     // private Text leaderText;
     // private Text cookText;
