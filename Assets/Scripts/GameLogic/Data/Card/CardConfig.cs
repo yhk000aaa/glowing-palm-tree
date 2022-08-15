@@ -9,13 +9,14 @@ public class CardType
     public const string Move = "move";
     public const string Leader = "lead";
 
-    public const string Materialr = "materialr";
+    public const string Material = "material";
 }
 
 public class CardConfig : NSConfigObject
 {
     public string name { get; private set; }
     public string desc { get; private set; }
+    public string extraDesc { get; private set; }
     public float cost { get; private set; }
     public float value { get; private set; }
     public string cardType { get; private set; }
@@ -29,7 +30,7 @@ public class CardConfig : NSConfigObject
 
         {CardType.Leader, "LeaderCardObject"},
 
-        {CardType.Materialr, "MaterialrCardObject"},
+        {CardType.Material, "MaterialCardObject"},
 
     };
 
@@ -38,6 +39,7 @@ public class CardConfig : NSConfigObject
         base.initializeByParameters(parameters);
         this.name = parameters.stringValue("name");
         this.desc = parameters.stringValue("desc");
+        this.extraDesc = parameters.stringValue("extraDesc");
         this.cost = parameters.floatValue("cost");
         this.value = parameters.floatValue("value");
         this.cardType = parameters.stringValue("cardType", CardType.None);

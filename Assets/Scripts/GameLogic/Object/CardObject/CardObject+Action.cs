@@ -19,44 +19,45 @@ public partial class CardObject
     {
         this.isOver = true;
     }
-    public class MoveCardOject : CardObject
+}
+
+public class MoveCardObject : CardObject
+{
+    public override void triggerUseAction()
     {
-        public override void triggerUseAction()
-        {
-            base.triggerUseAction();
+        base.triggerUseAction();
 
-            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
 
-        }
     }
-    public class SearchCardObject : CardObject
+}
+public class SearchCardObject : CardObject
+{
+    public override void triggerUseAction()
     {
-        public override void triggerUseAction()
-        {
-            base.triggerUseAction();
+        base.triggerUseAction();
 
-            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
 
-        }
     }
-    public class LeaderCardObject : CardObject
+}
+public class LeaderCardObject : CardObject
+{
+    public override void triggerUseAction()
     {
-        public override void triggerUseAction()
-        {
-            base.triggerUseAction();
+        base.triggerUseAction();
 
-            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
 
-        }
     }
-    public class MaterialrCardObject : CardObject
+}
+public class MaterialCardObject : CardObject
+{
+    public override void triggerUseAction()
     {
-        public override void triggerUseAction()
-        {
-            base.triggerUseAction();
+        base.triggerUseAction();
 
-            this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
 
-        }
     }
 }

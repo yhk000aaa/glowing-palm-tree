@@ -5,28 +5,32 @@
             "cardType" : "move",
             "cost": 1,
             "value" : 1,
-            "desc" : "前进{0}"
+            "desc" : "前进{0}",
+            "extraDesc" : "巴拉巴拉"
         },
         "2": {
             "name": "寻食",
             "cardType" : "search",
             "cost": 1,
             "value" : 3,
-            "desc" : "食物加{0}"
+            "desc" : "食物加{0}",
+            "extraDesc" : "巴拉巴拉"
         },
         "3": {
             "name": "领导",
             "cardType" : "lead",
             "cost": 1,
             "value" : 2,
-            "desc" : "领导力加{0}"
+            "desc" : "领导力加{0}",
+            "extraDesc" : "巴拉巴拉"
         },
-        "4"{
+        "4" : {
             "name":"收集",
-            "cardType":"materialr",
+            "cardType":"material",
             "cost":3,
             "value":4,
-            "desc":"收集废料{0}"
+            "desc":"收集废料{0}",
+            "extraDesc" : "巴拉巴拉"
         }
     }
 }
