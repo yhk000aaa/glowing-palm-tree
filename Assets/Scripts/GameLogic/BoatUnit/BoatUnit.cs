@@ -7,38 +7,25 @@ public class BoatActiveData
 {
     class NumberType
     {
-        public const string LeaderPoint = "leader";
-        public const string OperatePoint = "operate";
-        public const string CookPoint = "cook";
-        public const string SurfPoint = "surf";
-        public const string GuidePoint = "guide";
         public const string WalterPoint = "walter";
+        public const string MaterialPoint = "material";
         public const string SailPoint = "sail";
-
     }
     public BoatConfig boatConfig { get; private set; }
     private Dictionary<string, NumberDisplayObject> numberObjects;
 
-    public NumberDisplayObject leaderObj => this.numberObjects[NumberType.LeaderPoint];
-    public NumberDisplayObject operateObj => this.numberObjects[NumberType.OperatePoint];
-    public NumberDisplayObject cookObj => this.numberObjects[NumberType.CookPoint];
-    public NumberDisplayObject surfObj => this.numberObjects[NumberType.SurfPoint];
-    public NumberDisplayObject guideObj => this.numberObjects[NumberType.GuidePoint];
-    public NumberDisplayObject walterObj => this.numberObjects[NumberType.WalterPoint];
     public NumberDisplayObject sailObj => this.numberObjects[NumberType.SailPoint];
+    public NumberDisplayObject materialObj => this.numberObjects[NumberType.MaterialPoint];
+    public NumberDisplayObject walterObj => this.numberObjects[NumberType.WalterPoint];
+
     public void init(BoatConfig boatConfig)
     {
         this.boatConfig = boatConfig;
 
         this.numberObjects = new Dictionary<string, NumberDisplayObject>();
-        this.numberObjects[NumberType.LeaderPoint] = new NumberDisplayObject(this.boatConfig.leader);
-        this.numberObjects[NumberType.OperatePoint] = new NumberDisplayObject(this.boatConfig.operate);
-        this.numberObjects[NumberType.CookPoint] = new NumberDisplayObject(this.boatConfig.cook);
-        this.numberObjects[NumberType.SurfPoint] = new NumberDisplayObject(this.boatConfig.surf);
-        this.numberObjects[NumberType.GuidePoint] = new NumberDisplayObject(this.boatConfig.guide);
         this.numberObjects[NumberType.WalterPoint] = new NumberDisplayObject(30);
+        this.numberObjects[NumberType.MaterialPoint] = new NumberDisplayObject(10);
         this.numberObjects[NumberType.SailPoint] = new NumberDisplayObject(0);
-
     }
 }
 
