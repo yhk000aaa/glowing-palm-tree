@@ -4,15 +4,13 @@ using UnityEngine;
 
 public partial class BoatUnit
 {
-    private List<CardObject> cardObjectList;
+    public List<CardObject> cardObjectList { get; private set; }
 
+    public int maxCardCount => 5;
+    
     void startCards()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            var cardConfig = CardDataHandler.Instance.configRoot.configList.getRandomOne();
-            this.addCardObject(cardConfig);
-        }
+ 
     }
 
     void updateCards(float dt)
@@ -50,5 +48,22 @@ public partial class BoatUnit
         obj.boatUnit = this;
         obj.start();
         this.cardObjectList.Add(obj);
+    }
+
+    public void addCardObject()
+    {
+        var cardConfig = CardDataHandler.Instance.configRoot.configList.FindAll(x=>x.cardType != CardType.Food).getRandomOne();
+        this.addCardObject(cardConfig);
+    }
+    
+    public void fillCardUntilFull()
+    {
+        while (true) {
+            if (this.cardObjectList.Count >= this.maxCardCount) {
+                break;
+            }
+            
+            this.addCardObject();
+        }
     }
 }

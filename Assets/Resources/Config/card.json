@@ -1,22 +1,46 @@
 {
     "config": {
-        "1": {
+        "11": {
             "name": "航行",
             "cardType" : "move",
             "cost": 1,
             "value" : 1,
-            "desc" : "前进{0}",
+            "desc" : "航线点+{0}",
             "extraDesc" : "巴拉巴拉"
         },
-        "2": {
+        "12": {
+            "name": "航行",
+            "cardType" : "moveMultiple",
+            "cost": 1,
+            "value" : 2,
+            "desc" : "航向点*{0}",
+            "extraDesc" : "巴拉巴拉"
+        },
+        "13": {
+            "name": "抽卡",
+            "cardType" : "drawCardFull",
+            "cost": 1,
+            "desc" : "抽卡至手牌上线",
+            "extraDesc" : "巴拉巴拉"
+        },
+
+        "21": {
             "name": "寻食",
-            "cardType" : "search",
+            "cardType" : "searchFood",
             "cost": 1,
             "value" : 3,
-            "desc" : "食物加{0}",
+            "desc" : "抽{0}张食物卡",
             "extraDesc" : "巴拉巴拉"
         },
-        "3": {
+        "22": {
+            "name": "寻食",
+            "cardType" : "convertFood",
+            "cost": 1,
+            "desc" : "本回合使用寻食后，不获得食物而是获得材料",
+            "extraDesc" : "巴拉巴拉"
+        },
+
+        "31": {
             "name": "领导",
             "cardType" : "lead",
             "cost": 1,
@@ -24,13 +48,55 @@
             "desc" : "领导力加{0}",
             "extraDesc" : "巴拉巴拉"
         },
-        "4" : {
+        "32": {
+            "name": "领导",
+            "cardType" : "drawCardByCount",
+            "cost": 1,
+            "value" : 2,
+            "desc" : "抽{0}张卡",
+            "extraDesc" : "巴拉巴拉"
+        },
+
+        "41" : {
             "name":"收集",
-            "cardType":"material",
+            "cardType":"searchMaterial",
             "cost":3,
             "value":4,
             "desc":"收集废料{0}",
             "extraDesc" : "巴拉巴拉"
-        }
+        },
+
+        "101" : {
+            "name":"小鱼",
+            "cardType":"food",
+            "cost": 0,
+            "value":1,
+            "desc":"食物{0}",
+            "extraDesc" : "巴拉巴拉"
+        },
+        "102" : {
+            "name":"带鱼",
+            "cardType":"food",
+            "cost": 0,
+            "value":2,
+            "desc":"食物{0}",
+            "extraDesc" : "巴拉巴拉"
+        },
+        "103" : {
+            "name":"鲜牛肉",
+            "cardType":"food",
+            "cost": 0,
+            "value":3,
+            "desc":"食物{0}",
+            "extraDesc" : "巴拉巴拉"
+        },
+        "104" : {
+            "name":"还带",
+            "cardType":"food",
+            "cost": 0,
+            "value":1,
+            "desc":"食物{0}",
+            "extraDesc" : "巴拉巴拉"
+        },
     }
 }

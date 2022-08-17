@@ -7,7 +7,7 @@ public class RoomBaseObject : BaseObject
     public RoomBaseObject preRoomObject;
     public RoomBaseObject nextRoomObject;
     public RoomConfig roomConfig;
-
+    protected BoatUnit boatUnit => this.battleObject.boatUnit;
     public BattleObject battleObject;
     protected EventObject eventObject;
     

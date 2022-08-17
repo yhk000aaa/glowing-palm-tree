@@ -5,11 +5,18 @@ using UnityEngine;
 public class CardType
 {
     public const string None = "none";
-    public const string Search = "search";
+    public const string SearchFood = "searchFood";
     public const string Move = "move";
+    public const string MoveMultiple = "moveMultiple";
     public const string Leader = "lead";
 
-    public const string Material = "material";
+    public const string SearchMaterial = "searchMaterial";
+    public const string DrawCardFull = "drawCardFull";
+
+    public const string DrawCardByCount = "drawCardByCount";
+
+    public const string Food = "food";
+    public const string ConvertFood = "convertFood";
 }
 
 public class CardConfig : NSConfigObject
@@ -25,13 +32,18 @@ public class CardConfig : NSConfigObject
     private static Dictionary<string, string> CardObjectClassNames = new Dictionary<string, string>()
     {
         {CardType.Move, "MoveCardObject"},
+        {CardType.MoveMultiple, "MoveMultipleCardObject"},
 
-        {CardType.Search, "SearchCardObject"},
+        {CardType.SearchFood, "SearchFoodCardObject"},
 
         {CardType.Leader, "LeaderCardObject"},
 
-        {CardType.Material, "MaterialCardObject"},
-
+        {CardType.SearchMaterial, "SearchMaterialCardObject"},
+        {CardType.DrawCardFull, "DrawCardFullCardObject"},
+        {CardType.DrawCardByCount, "DrawCardByCountCardObject"},
+        
+        {CardType.Food, "FoodCardObject"},
+        {CardType.ConvertFood, "ConvertFoodCardObject"}
     };
 
     public override void initializeByParameters(Dictionary<string, object> parameters)

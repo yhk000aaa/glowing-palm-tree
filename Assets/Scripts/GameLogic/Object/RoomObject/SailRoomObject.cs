@@ -60,11 +60,12 @@ public class SailRoomObject : RoomBaseObject
 
     void runActionRound()
     {
-        //TODO:回合开始，抽卡
         Debug.LogWarning("行动回合开始，抽卡");
         this.delay = 1;
         this.currentDelay = 0;
         this.battleObject.battleUI.endRoundBtn.onClick.AddListener(this.clickEndBtnEvent);
+        
+        this.boatUnit.fillCardUntilFull();
     }
     
     void leaveActionRound()
@@ -76,7 +77,8 @@ public class SailRoomObject : RoomBaseObject
     {
         //TODO:结算，前进
         Debug.LogWarning("结算，前进");
-        this.currentStep++;
+        this.currentStep += (int)this.boatUnit.activeData.sailObj.value;
+        this.boatUnit.triggerRoundEnd();
         
         this.delay = 1;
         this.currentDelay = 0;

@@ -19,6 +19,11 @@ public partial class CardObject
     {
         this.isOver = true;
     }
+
+    public virtual void triggerRoundEnd()
+    {
+        
+    }
 }
 
 public class MoveCardObject : CardObject
@@ -27,16 +32,77 @@ public class MoveCardObject : CardObject
     {
         base.triggerUseAction();
 
-        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + 1);
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + this.cardInsData.value);
 
     }
 }
-public class SearchCardObject : CardObject
+
+public class MoveMultipleCardObject : CardObject
 {
     public override void triggerUseAction()
     {
         base.triggerUseAction();
-        
+
+        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value * this.cardInsData.value);
+    }
+}
+
+public class DrawCardFullCardObject : CardObject
+{
+    public override void triggerUseAction()
+    {
+        base.triggerUseAction();
+
+        while (true) {
+            if (this.boatUnit.cardObjectList.Count >= this.boatUnit.maxCardCount) {
+                break;
+            }
+            
+            this.boatUnit.addCardObject();
+        }
+    }
+}
+
+public class DrawCardByCountCardObject : CardObject
+{
+    public override void triggerUseAction()
+    {
+        base.triggerUseAction();
+
+        for (int i = 0; i < this.cardInsData.value; i++) {
+            this.boatUnit.addCardObject();
+        }
+    }
+}
+
+
+public class SearchFoodCardObject : CardObject
+{
+    public bool convertMaterial;
+    
+    public override void triggerUseAction()
+    {
+        base.triggerUseAction();
+        for (int i = 0; i < this.cardInsData.value; i++) {
+            var cardList = this.mainNode.mainData.cardConfigRoot.configList.FindAll(x => x.cardType == CardType.Food);
+            if (cardList.Count == 0) {
+                continue;
+            }
+            
+            var cardConfig = cardList.getRandomOne();
+            if (convertMaterial) {
+                this.boatUnit.activeData.materialObj.addValue(cardConfig.value);
+            }
+            else {
+                this.boatUnit.addCardObject(cardConfig);
+            }
+        }
+    }
+
+    public override void triggerRoundEnd()
+    {
+        base.triggerRoundEnd();
+        this.convertMaterial = true;
     }
 }
 public class LeaderCardObject : CardObject
@@ -47,11 +113,30 @@ public class LeaderCardObject : CardObject
         
     }
 }
-public class MaterialCardObject : CardObject
+public class SearchMaterialCardObject : CardObject
 {
     public override void triggerUseAction()
     {
         base.triggerUseAction();
-        
+        this.boatUnit.activeData.materialObj.setValue(this.boatUnit.activeData.materialObj.value + this.cardInsData.value);
     }
+}
+
+public class ConvertFoodCardObject : CardObject
+{
+    public override void triggerUseAction()
+    {
+        base.triggerUseAction();
+
+        foreach (var o in this.boatUnit.cardObjectList) {
+            if (o is SearchFoodCardObject searchFoodCardObject) {
+                searchFoodCardObject.convertMaterial = true;
+            }
+        }
+    }
+}
+
+public class FoodCardObject : CardObject
+{
+    
 }

@@ -8,7 +8,7 @@ public partial class BattleObject
 {
     private List<RoomBaseObject> roomObjectList;
     private RoomBaseObject currentRoomObject;
-    private BoatUnit boatUnit;
+    public BoatUnit boatUnit { get; private set; }
 
     void initStatus()
     {

@@ -88,4 +88,14 @@ public partial class BoatUnit : Unit
         base.update(dt);
         this.updateCards(dt);
     }
+    
+    //回合结束，结算
+    public void triggerRoundEnd()
+    {
+        this.activeData.sailObj.setValue(0);
+
+        foreach (var o in this.cardObjectList) {
+            o.triggerRoundEnd();
+        }
+    }
 }
