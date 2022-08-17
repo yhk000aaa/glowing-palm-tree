@@ -8,7 +8,6 @@ public class BaseObject
 {
     public EducationNode mainNode { get; private set; }
     private StatusObject _statusObject;
-
     protected int baseState
     {
         get => this._statusObject.status;
@@ -18,7 +17,12 @@ public class BaseObject
     protected Dictionary<int, Action<float>> updateActions => _statusObject.updateActions;
     protected Dictionary<int, Action> leaveActions => _statusObject.leaveActions;
     protected virtual bool needStateObject => false;
-    
+
+    public BaseObject()
+    {
+        this.init();
+    }
+
     public virtual void init()
     {
         this.mainNode = EducationNode.Instance;

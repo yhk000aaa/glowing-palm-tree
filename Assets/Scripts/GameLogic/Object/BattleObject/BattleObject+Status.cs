@@ -23,7 +23,6 @@ public partial class BattleObject
             var obj = DataUtils.Instance.getActivator<RoomBaseObject>(roomConfig.objectClassName);
             obj.battleObject = this;
             obj.roomConfig = roomConfig;
-            obj.init();
             this.roomObjectList.Add(obj);
         }
 
@@ -38,9 +37,9 @@ public partial class BattleObject
             return;
         }
         
-        this.setCurrentRoomObject(this.roomObjectList[0]);
-        
         this.boatUnit = this.mainNode.unitManager.createBoatUnit(battleUI, BoatDataHandler.Instance.configRoot.configList.getRandomOne());
+
+        this.setCurrentRoomObject(this.roomObjectList[0]);
     }
 
     void updateStatus(float dt)
