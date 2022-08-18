@@ -5,6 +5,8 @@ using UnityEngine;
 public class EventObject : BaseObject
 {
     public EventConfig eventConfig;
+    public BoatUnit boatUnit;
+    public RoomBaseObject roomObject;
     public bool isOver { get; private set; }
 
     protected void stateOver()

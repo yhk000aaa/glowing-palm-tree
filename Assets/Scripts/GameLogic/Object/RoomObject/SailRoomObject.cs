@@ -100,6 +100,8 @@ public class SailRoomObject : RoomBaseObject
         var eventConfig = this.mainNode.mainData.eventConfigRoot.configList.getRandomOne();
         this.eventObject = DataUtils.Instance.getActivator<EventObject>(eventConfig.objectClassName);
         this.eventObject.eventConfig = eventConfig;
+        this.eventObject.boatUnit = this.boatUnit;
+        this.eventObject.roomObject = this;
         this.eventObject.start();
     }
 
@@ -140,5 +142,10 @@ public class SailRoomObject : RoomBaseObject
         if (this.baseState == SailRoomObjectStatus.ActionRound) {
             this.baseState = SailRoomObjectStatus.Calculate;
         }
+    }
+
+    public void addCurrentStep(int value)
+    {
+        this.currentStep += value;
     }
 }

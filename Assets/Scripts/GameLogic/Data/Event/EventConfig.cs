@@ -12,6 +12,9 @@ public class EventConfig : NSConfigObject
     private static Dictionary<string, string> ObjectClassNames = new Dictionary<string, string>()
     {
         {"useWalter", "EmptyEventObject"},
+        {"changeSailToMaterial", "ChangeSailToMaterialEventObject"},
+        {"zeroSail", "ZeroSailEventObject"},
+        {"drawCards", "DrawCardsEventObject"}
     };
     
     public override void initializeByParameters(Dictionary<string, object> parameters)

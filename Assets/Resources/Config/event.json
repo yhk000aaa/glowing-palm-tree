@@ -1,9 +1,24 @@
 {
     "config": {
-        "1": {
-            "name": "事件1",
-            "type" : "useWalter",
+        // "1": {
+        //     "name": "事件1",
+        //     "type" : "useWalter",
+        //     "value" : 1,
+        // },
+        "2" : {
+            "name": "航向点转为材料",
+            "type" : "changeSailToMaterial",
+            "value" : 6,
+        },
+        "3" : {
+            "name": "水-1，导航能力归零",
+            "type" : "zeroSail",
             "value" : 1,
         },
+        "4" : {
+            "name": "抽卡",
+            "type" : "drawCards",
+            "value" : 2,
+        }
     }
 }
