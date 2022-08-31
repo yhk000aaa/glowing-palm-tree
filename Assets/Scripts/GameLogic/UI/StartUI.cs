@@ -8,6 +8,7 @@ public class StartUI : BaseUI
 {
     private Button confirmBtn;
     private Button leaveBtn;
+    private Button settingBtn;
     public override EnumUIType GetUIType()
     {
         return EnumUIType.StartUI;
@@ -20,12 +21,15 @@ public class StartUI : BaseUI
         this.confirmBtn.onClick.AddListener(this.clickConfirmBtnEvent);
         this.leaveBtn = this.gameObject.transform.Find("leaveButton").GetComponent<Button>();
         this.leaveBtn.onClick.AddListener(this.clickLeaveBtnEvent);
+        this.settingBtn = this.gameObject.transform.Find("setingButton").GetComponent<Button>();
+        this.settingBtn.onClick.AddListener(this.clickSettingBtnEvent);
     }
 
     protected override void destroyAction()
     {
         this.confirmBtn.onClick.RemoveListener(this.clickConfirmBtnEvent);
         this.leaveBtn.onClick.RemoveListener(this.clickLeaveBtnEvent);
+        this.settingBtn.onClick.RemoveListener(this.clickSettingBtnEvent);
         base.destroyAction();
     }
 
@@ -42,5 +46,10 @@ public class StartUI : BaseUI
         else{
             Application.Quit();
         }
+    }
+
+    void clickSettingBtnEvent()
+    {
+
     }
 }
