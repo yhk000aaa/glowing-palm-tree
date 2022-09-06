@@ -32,7 +32,7 @@ public class CardConfig : NSConfigObject
     private static Dictionary<string, string> CardObjectClassNames = new Dictionary<string, string>()
     {
         {CardType.Move, "MoveCardObject"},
-        {CardType.MoveMultiple, "MoveMultipleCardObject"},
+     //   {CardType.MoveMultiple, "MoveMultipleCardObject"},
 
         {CardType.SearchFood, "SearchFoodCardObject"},
 

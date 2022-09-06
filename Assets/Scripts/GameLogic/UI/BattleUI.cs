@@ -26,7 +26,7 @@ public class BattleUI : BaseUI
     /// 更新水量UI
     /// </summary>
     /// <param name="waterNum">水的数量</param>
-    public void UpdateWater(int waterNum)
+    public void UpdateWater(float waterNum)
     {
         this.walter.value = waterNum;
     }
@@ -34,7 +34,7 @@ public class BattleUI : BaseUI
     /// 更新据下一个岛距离UI
     /// </summary>
     /// <param name="distanceNum">距离</param>
-    public void UpdateSail(int distanceNum)
+    public void UpdateSail(float distanceNum)
     {
         this.sail.value = distanceNum;
     }

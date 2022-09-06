@@ -32,8 +32,8 @@ public class MoveCardObject : CardObject//航向卡  (向前移动)
     {
         base.triggerUseAction();
 
-        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + this.cardInsData.value);
-
+        boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value + this.cardInsData.value);
+        boatUnit.battleUI.UpdateSail(boatUnit.activeData.sailObj.value);
     }
 }
 
@@ -43,7 +43,8 @@ public class MoveMultipleCardObject : CardObject//???
     {
         base.triggerUseAction();
 
-        this.boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value * this.cardInsData.value);
+        boatUnit.activeData.sailObj.setValue(boatUnit.activeData.sailObj.value * this.cardInsData.value);
+        boatUnit.battleUI.UpdateSail(boatUnit.activeData.sailObj.value);
     }
 }
 
@@ -54,11 +55,11 @@ public class DrawCardFullCardObject : CardObject
         base.triggerUseAction();
 
         while (true) {
-            if (this.boatUnit.cardObjectList.Count >= this.boatUnit.maxCardCount) {
+            if (boatUnit.cardObjectList.Count >= boatUnit.maxCardCount) {
                 break;
             }
             
-            this.boatUnit.addCardObject();
+            boatUnit.addCardObject();
         }
     }
 }
@@ -70,7 +71,7 @@ public class DrawCardByCountCardObject : CardObject
         base.triggerUseAction();
 
         for (int i = 0; i < this.cardInsData.value; i++) {
-            this.boatUnit.addCardObject();
+            boatUnit.addCardObject();
         }
     }
 }
@@ -91,10 +92,10 @@ public class SearchFoodCardObject : CardObject
             
             var cardConfig = cardList.getRandomOne();
             if (convertMaterial) {
-                this.boatUnit.activeData.materialObj.addValue(cardConfig.value);
+                boatUnit.activeData.materialObj.addValue(cardConfig.value);
             }
             else {
-                this.boatUnit.addCardObject(cardConfig);
+                boatUnit.addCardObject(cardConfig);
             }
         }
     }
@@ -118,7 +119,7 @@ public class SearchMaterialCardObject : CardObject
     public override void triggerUseAction()
     {
         base.triggerUseAction();
-        this.boatUnit.activeData.materialObj.setValue(this.boatUnit.activeData.materialObj.value + this.cardInsData.value);
+        boatUnit.activeData.materialObj.setValue(boatUnit.activeData.materialObj.value + this.cardInsData.value);
     }
 }
 
@@ -128,7 +129,7 @@ public class ConvertFoodCardObject : CardObject//食物卡
     {
         base.triggerUseAction();
 
-        foreach (var o in this.boatUnit.cardObjectList) {
+        foreach (var o in boatUnit.cardObjectList) {
             if (o is SearchFoodCardObject searchFoodCardObject) {
                 searchFoodCardObject.convertMaterial = true;
             }

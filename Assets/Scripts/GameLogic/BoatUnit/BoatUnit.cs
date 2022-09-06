@@ -35,7 +35,7 @@ public partial class BoatUnit : Unit
 
     public BoatActiveData activeData { get; private set; }
     public BoatConfig boatConfig { get; private set; }
-    private BattleUI battleUI;
+    public BattleUI battleUI;
 
     // private GameObject roleObject;
     // private Text leaderText;
