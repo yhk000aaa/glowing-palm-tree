@@ -22,4 +22,21 @@ public class BattleUI : BaseUI
         this.walter = this.gameObject.transform.Find("walter").GetComponent<Slider>();
         this.endRoundBtn = this.gameObject.transform.Find("EndRound").GetComponent<Button>();
     }
+    /// <summary>
+    /// 更新水量UI
+    /// </summary>
+    /// <param name="waterNum">水的数量</param>
+    public void UpdateWater(int waterNum)
+    {
+        this.walter.value = waterNum;
+    }
+    /// <summary>
+    /// 更新据下一个岛距离UI
+    /// </summary>
+    /// <param name="distanceNum">距离</param>
+    public void UpdateSail(int distanceNum)
+    {
+        this.sail.value = distanceNum;
+    }
+
 }

@@ -26,7 +26,7 @@ public partial class CardObject
     }
 }
 
-public class MoveCardObject : CardObject
+public class MoveCardObject : CardObject//航向卡  (向前移动)
 {
     public override void triggerUseAction()
     {
@@ -37,7 +37,7 @@ public class MoveCardObject : CardObject
     }
 }
 
-public class MoveMultipleCardObject : CardObject
+public class MoveMultipleCardObject : CardObject//???
 {
     public override void triggerUseAction()
     {
@@ -122,7 +122,7 @@ public class SearchMaterialCardObject : CardObject
     }
 }
 
-public class ConvertFoodCardObject : CardObject
+public class ConvertFoodCardObject : CardObject//食物卡
 {
     public override void triggerUseAction()
     {
@@ -136,7 +136,7 @@ public class ConvertFoodCardObject : CardObject
     }
 }
 
-public class FoodCardObject : CardObject
+public class FoodCardObject : CardObject//食物卡
 {
     
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public partial class CardObject
 {
     private CardProto cardProto;
-    void startGameObject()
+    void startGameObject()//创建卡牌预制体
     {
         var obj = (GameObject) Resources.Load("Prefabs/UI/CardProto");
         var parent = this.boatUnit.gameObject.transform.Find("Hand");

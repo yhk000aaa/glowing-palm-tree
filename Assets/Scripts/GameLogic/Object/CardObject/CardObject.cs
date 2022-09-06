@@ -4,6 +4,9 @@ using UnityEngine;
 
 public partial class CardObject : BaseObject
 {
+    /// <summary>
+    /// ¿¨ÅÆÊý¾Ý
+    /// </summary>
     public CardInsData cardInsData;
     public BoatUnit boatUnit;
     public bool isOver { get; private set; }

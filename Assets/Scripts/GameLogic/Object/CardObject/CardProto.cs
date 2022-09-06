@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public CardObject cardObject;
+    public GameObject cardMessageObject;
     private CardInsData cardInsData => this.cardObject.cardInsData;
     private Text nameLabel;
     private Text classLabel;
@@ -21,7 +22,7 @@ public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     public event Action endDragAction;
 
     private Vector2 startPos;
-    
+
     public void start()
     {
         this.canvasGroup = this.gameObject.GetComponent<CanvasGroup>();
@@ -30,7 +31,7 @@ public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         this.costLabel = this.gameObject.transform.Find("CardBackground/CostLabel").GetComponent<Text>();
         this.classLabel = this.gameObject.transform.Find("CardBackground/ClassLabel").GetComponent<Text>();
         this.extraDescLabel = this.gameObject.transform.Find("CardBackground/ExtraDescLabel").GetComponent<Text>();
-        
+
         this.nameLabel.text = this.cardInsData.name;
         this.descLabel.text = this.cardInsData.getDesc();
         this.classLabel.text = this.cardInsData.config.cardType.toString();
@@ -48,6 +49,7 @@ public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         this.beginDragAction?.Invoke();
 
         this.startPos = this.gameObject.transform.localPosition;
+        this.gameObject.transform.localScale = new Vector3(4, 4, 4);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -55,22 +57,37 @@ public class CardProto : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
         this.dragAction?.Invoke();
 
         this.gameObject.transform.position += (Vector3)eventData.delta;
+        this.showCardMessage();
     }
-    
+
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.LogError("OnEndDrag");
         this.endDragAction?.Invoke();
 
-        if (this.gameObject.transform.localPosition.y - this.startPos.y > 100) {
-            this.cardObject.triggerUseAction();   
+        if (this.gameObject.transform.localPosition.y - this.startPos.y > 100)
+        {
+            this.cardObject.triggerUseAction();
         }
-        else {
+        else
+        {
             this.canvasGroup.interactable = false;
+            this.gameObject.transform.localScale = Vector3.one;
             this.gameObject.moveLocalPosTo(this.startPos, 6 / 30f).OnComplete(() =>
             {
                 this.canvasGroup.interactable = true;
             });
         }
+    }
+    /// <summary>
+    /// 显示卡牌的详细信息
+    /// </summary>
+    private void showCardMessage()
+    {
+        //if (this.cardMessageObject == null)
+        //{
+        //    this.cardMessageObject = GameObject.Instantiate<GameObject>(this.gameObject, this.transform, true);
+        //    this.cardMessageObject.transform.localScale = new Vector3(4, 4, 4);
+        //}
     }
 }
