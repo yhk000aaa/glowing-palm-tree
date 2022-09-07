@@ -18,11 +18,16 @@ public partial class CardObject
     public virtual void triggerUseAction()
     {
         this.isOver = true;
+        if (this.cardInsData.cost != 0)
+        {
+            this.boatUnit.activeData.walterObj.setValue(boatUnit.activeData.walterObj.value - this.cardInsData.cost);
+            boatUnit.battleUI.UpdateWater(boatUnit.activeData.walterObj.value);
+        }
     }
 
     public virtual void triggerRoundEnd()
     {
-        
+
     }
 }
 
@@ -54,11 +59,14 @@ public class DrawCardFullCardObject : CardObject
     {
         base.triggerUseAction();
 
-        while (true) {
-            if (boatUnit.cardObjectList.Count >= boatUnit.maxCardCount) {
+
+        while (true)
+        {
+            if (boatUnit.cardObjectList.Count >= boatUnit.maxCardCount)
+            {
                 break;
             }
-            
+
             boatUnit.addCardObject();
         }
     }
@@ -70,8 +78,10 @@ public class DrawCardByCountCardObject : CardObject
     {
         base.triggerUseAction();
 
-        for (int i = 0; i < this.cardInsData.value; i++) {
-            boatUnit.addCardObject();
+        for (int i = 0; i < this.cardInsData.value; i++)
+        {
+            this.boatUnit.addCardObject();
+
         }
     }
 }
@@ -80,21 +90,26 @@ public class DrawCardByCountCardObject : CardObject
 public class SearchFoodCardObject : CardObject
 {
     public bool convertMaterial;
-    
+
     public override void triggerUseAction()
     {
         base.triggerUseAction();
-        for (int i = 0; i < this.cardInsData.value; i++) {
+        for (int i = 0; i < this.cardInsData.value; i++)
+        {
             var cardList = this.mainNode.mainData.cardConfigRoot.configList.FindAll(x => x.cardType == CardType.Food);
-            if (cardList.Count == 0) {
+            if (cardList.Count == 0)
+            {
                 continue;
             }
-            
+
             var cardConfig = cardList.getRandomOne();
-            if (convertMaterial) {
+
+            if (convertMaterial)
+            {
                 boatUnit.activeData.materialObj.addValue(cardConfig.value);
             }
-            else {
+            else
+            {
                 boatUnit.addCardObject(cardConfig);
             }
         }
@@ -111,7 +126,7 @@ public class LeaderCardObject : CardObject
     public override void triggerUseAction()
     {
         base.triggerUseAction();
-        
+
     }
 }
 public class SearchMaterialCardObject : CardObject
@@ -129,8 +144,11 @@ public class ConvertFoodCardObject : CardObject//食物卡
     {
         base.triggerUseAction();
 
-        foreach (var o in boatUnit.cardObjectList) {
-            if (o is SearchFoodCardObject searchFoodCardObject) {
+
+        foreach (var o in boatUnit.cardObjectList)
+        {
+            if (o is SearchFoodCardObject searchFoodCardObject)
+            {
                 searchFoodCardObject.convertMaterial = true;
             }
         }
@@ -139,5 +157,5 @@ public class ConvertFoodCardObject : CardObject//食物卡
 
 public class FoodCardObject : CardObject//食物卡
 {
-    
+
 }
